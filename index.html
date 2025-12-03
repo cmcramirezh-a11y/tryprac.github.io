@@ -1,0 +1,790 @@
+Adding Navigation Links to Your Website
+
+I'll create the content for each navigation section and add the necessary IDs for linking. Here's the complete code with all sections filled in:
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Web Designer Philippines</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background-color: #111;
+      color: #fff;
+      overflow-x: hidden;
+    }
+
+    /* Navigation */
+    header {
+      background: #111;
+      padding: 20px 0;
+      border-bottom: 1px solid #222;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      font-weight: 700;
+      font-size: 1.3rem;
+      letter-spacing: 1px;
+    }
+
+    .logo .w {
+      font-size: 2rem;
+      color: #e63946;
+    }
+
+    .logo .ph {
+      color: #e63946;
+    }
+
+    nav ul {
+      display: flex;
+      gap: 25px;
+      list-style: none;
+    }
+
+    nav ul li {
+      position: relative;
+    }
+
+    nav ul li a {
+      color: #ccc;
+      text-decoration: none;
+      font-size: 0.95rem;
+      transition: 0.3s;
+      padding: 5px 0;
+      position: relative;
+    }
+
+    nav ul li a:hover {
+      color: #fff;
+    }
+
+    /* Hover underline effect */
+    nav ul li a::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: 0;
+      left: 0;
+      background-color: #e63946;
+      transition: width 0.3s ease;
+    }
+
+    nav ul li a:hover::after {
+      width: 100%;
+    }
+
+    .btn {
+      background: #e63946;
+      color: #fff;
+      text-decoration: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      font-weight: 600;
+      transition: 0.3s;
+    }
+
+    .btn:hover {
+      background: #c72e3a;
+    }
+
+    /* Hero Section with Background Image */
+    .hero {
+      height: 100vh;
+      width: 100%;
+      background: url('https://images.unsplash.com/photo-1587825140708-dfaf72ae4b04?auto=format&fit=crop&w=1200&q=80')
+                  no-repeat center center/cover;
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: left;
+      padding: 0 20px;
+      box-sizing: border-box;
+      overflow: hidden;
+    }
+
+    /* Dark overlay for text visibility */
+    .hero .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      background: rgba(0, 0, 0, 0.6);
+      z-index: 1;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 600px;
+    }
+
+    .hero-content h1 {
+      font-size: 3rem;
+      line-height: 1.2;
+    }
+
+    .hero-content h1 span {
+      color: #e63946;
+    }
+
+    .hero-content p {
+      margin-top: 20px;
+      font-size: 1rem;
+      color: #ddd;
+      line-height: 1.6;
+    }
+
+    .hero-content .btn {
+      margin-top: 25px;
+      display: inline-block;
+    }
+
+    /* Additional Content */
+    .content-section {
+      padding: 80px 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 50px;
+      font-size: 2.5rem;
+    }
+
+    .section-title span {
+      color: #e63946;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+    }
+
+    .service-card {
+      background: #222;
+      padding: 30px;
+      border-radius: 10px;
+      text-align: center;
+      transition: transform 0.3s;
+    }
+
+    .service-card:hover {
+      transform: translateY(-10px);
+    }
+
+    .service-icon {
+      font-size: 3rem;
+      color: #e63946;
+      margin-bottom: 20px;
+    }
+
+    .service-card h3 {
+      font-size: 1.5rem;
+      margin-bottom: 15px;
+    }
+
+    /* About Section */
+    .about-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 50px;
+      align-items: center;
+    }
+
+    .about-text h2 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+    }
+
+    .about-text p {
+      margin-bottom: 15px;
+      line-height: 1.6;
+      color: #ddd;
+    }
+
+    .about-image img {
+      width: 100%;
+      border-radius: 10px;
+    }
+
+    /* Portfolio Section */
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+    }
+
+    .portfolio-item {
+      background: #222;
+      border-radius: 10px;
+      overflow: hidden;
+      transition: transform 0.3s;
+    }
+
+    .portfolio-item:hover {
+      transform: translateY(-10px);
+    }
+
+    .portfolio-image {
+      height: 200px;
+      overflow: hidden;
+    }
+
+    .portfolio-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s;
+    }
+
+    .portfolio-item:hover .portfolio-image img {
+      transform: scale(1.1);
+    }
+
+    .portfolio-info {
+      padding: 20px;
+    }
+
+    .portfolio-info h3 {
+      font-size: 1.3rem;
+      margin-bottom: 10px;
+    }
+
+    /* Blog Section */
+    .blog-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+    }
+
+    .blog-card {
+      background: #222;
+      border-radius: 10px;
+      overflow: hidden;
+      transition: transform 0.3s;
+    }
+
+    .blog-card:hover {
+      transform: translateY(-10px);
+    }
+
+    .blog-image {
+      height: 200px;
+      overflow: hidden;
+    }
+
+    .blog-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s;
+    }
+
+    .blog-card:hover .blog-image img {
+      transform: scale(1.1);
+    }
+
+    .blog-content {
+      padding: 20px;
+    }
+
+    .blog-content h3 {
+      font-size: 1.3rem;
+      margin-bottom: 10px;
+    }
+
+    .blog-content p {
+      color: #ddd;
+      margin-bottom: 15px;
+      line-height: 1.6;
+    }
+
+    .read-more {
+      color: #e63946;
+      text-decoration: none;
+      font-weight: 600;
+      display: inline-block;
+      transition: 0.3s;
+    }
+
+    .read-more:hover {
+      color: #c72e3a;
+    }
+
+    /* Contact Section */
+    .contact-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 50px;
+    }
+
+    .contact-info h3 {
+      font-size: 1.5rem;
+      margin-bottom: 20px;
+    }
+
+    .contact-details {
+      margin-bottom: 30px;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      margin-bottom: 15px;
+    }
+
+    .contact-item i {
+      color: #e63946;
+      margin-right: 15px;
+      font-size: 1.2rem;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 20px;
+      background: #222;
+      border: 1px solid #333;
+      border-radius: 5px;
+      color: #fff;
+      font-size: 1rem;
+    }
+
+    .contact-form textarea {
+      height: 150px;
+      resize: vertical;
+    }
+
+    .contact-form button {
+      background: #e63946;
+      color: #fff;
+      border: none;
+      padding: 12px 30px;
+      border-radius: 5px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .contact-form button:hover {
+      background: #c72e3a;
+    }
+
+    /* Footer */
+    footer {
+      background: #222;
+      padding: 40px 20px;
+      text-align: center;
+      border-top: 1px solid #333;
+    }
+
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .social-icons {
+      margin: 20px 0;
+    }
+
+    .social-icons a {
+      color: #fff;
+      font-size: 1.5rem;
+      margin: 0 10px;
+      transition: color 0.3s;
+    }
+
+    .social-icons a:hover {
+      color: #e63946;
+    }
+
+    /* Mobile Responsive Styles */
+    @media (max-width: 768px) {
+      .container.nav {
+        flex-direction: column;
+        gap: 15px;
+      }
+      
+      nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+      }
+      
+      nav ul li a {
+        font-size: 0.85rem;
+      }
+      
+      .hero-content h1 {
+        font-size: 2rem;
+      }
+      
+      .hero-content p {
+        font-size: 0.9rem;
+      }
+      
+      .btn {
+        padding: 8px 16px;
+        font-size: 0.9rem;
+      }
+      
+      .section-title {
+        font-size: 2rem;
+      }
+      
+      .about-content {
+        grid-template-columns: 1fr;
+      }
+      
+      .contact-container {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 480px) {
+      nav ul {
+        gap: 10px;
+      }
+      
+      nav ul li a {
+        font-size: 0.8rem;
+      }
+      
+      .logo {
+        font-size: 1.1rem;
+      }
+      
+      .logo .w {
+        font-size: 1.7rem;
+      }
+    }
+
+    @media (max-height: 700px) {
+      .hero-content h1 {
+        font-size: 1.8rem;
+      }
+
+      .hero-content p {
+        font-size: 0.85rem;
+      }
+
+      .btn {
+        padding: 8px 14px;
+        font-size: 0.85rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation Bar -->
+  <header>
+    <div class="container nav">
+      <div class="logo">
+        <span class="w">W</span>EB DESIGNER <span class="ph">PHILIPPINES</span>
+      </div>
+      
+      <nav>
+        <ul id="nav-menu">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#services">Our Services</a></li>
+          <li><a href="#portfolio">Portfolio</a></li>
+          <li><a href="#blog">Blog</a></li>
+          <li><a href="#contact">Contact Us</a></li>
+        </ul>
+      </nav>
+      <a href="#contact" class="btn">INQUIRE NOW</a>
+    </div>
+  </header>
+
+  <!-- Hero Section with Background Image -->
+  <section class="hero" id="home">
+    <div class="overlay"></div>
+    <div class="hero-content">
+      <h1>Web Designer<br><span>Philippines</span></h1>
+      <p>
+        We are a Philippines-based web design and app development agency.
+        We cater to companies from small to enterprise-level businesses who are
+        looking to have a quality website and a strong online presence.
+      </p>
+      <a href="#contact" class="btn">INQUIRE NOW</a>
+    </div>
+  </section>
+
+  <!-- About Us Section -->
+  <section class="content-section" id="about">
+    <h2 class="section-title">About <span>Us</span></h2>
+    <div class="about-content">
+      <div class="about-text">
+        <h2>Creating Digital Experiences That Drive Results</h2>
+        <p>Web Designer Philippines is a premier web design and development agency based in Manila. With over 8 years of experience in the industry, we've helped hundreds of businesses establish their online presence and achieve their digital goals.</p>
+        <p>Our team consists of passionate designers, developers, and digital strategists who are committed to delivering exceptional results. We believe in creating websites that not only look beautiful but also perform exceptionally well.</p>
+        <p>We take pride in our Filipino craftsmanship, attention to detail, and dedication to client satisfaction. Whether you're a startup looking to make your mark or an established business seeking to enhance your digital footprint, we have the expertise to bring your vision to life.</p>
+        <a href="#contact" class="btn">Get In Touch</a>
+      </div>
+      <div class="about-image">
+        <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=600&q=80" alt="Our Team">
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  <section class="content-section" id="services">
+    <h2 class="section-title">Our <span>Services</span></h2>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon">
+          <i class="fas fa-laptop-code"></i>
+        </div>
+        <h3>Web Design</h3>
+        <p>Custom website designs that are visually appealing and user-friendly. We create responsive websites that work perfectly on all devices.</p>
+      </div>
+      
+      <div class="service-card">
+        <div class="service-icon">
+          <i class="fas fa-mobile-alt"></i>
+        </div>
+        <h3>App Development</h3>
+        <p>Mobile applications for iOS and Android platforms. We build native and cross-platform apps that deliver exceptional user experiences.</p>
+      </div>
+      
+      <div class="service-card">
+        <div class="service-icon">
+          <i class="fas fa-shopping-cart"></i>
+        </div>
+        <h3>E-Commerce</h3>
+        <p>Online stores with secure payment gateways and inventory management. We create e-commerce solutions that drive sales and conversions.</p>
+      </div>
+      
+      <div class="service-card">
+        <div class="service-icon">
+          <i class="fas fa-search"></i>
+        </div>
+        <h3>SEO Optimization</h3>
+        <p>Improve your website's visibility on search engines. Our SEO strategies help you rank higher and attract more organic traffic.</p>
+      </div>
+      
+      <div class="service-card">
+        <div class="service-icon">
+          <i class="fas fa-pencil-alt"></i>
+        </div>
+        <h3>Content Creation</h3>
+        <p>Engaging and SEO-friendly content that resonates with your audience. We create compelling copy that tells your brand story.</p>
+      </div>
+      
+      <div class="service-card">
+        <div class="service-icon">
+          <i class="fas fa-chart-line"></i>
+        </div>
+        <h3>Digital Marketing</h3>
+        <p>Comprehensive digital marketing strategies to grow your online presence and reach your target audience effectively.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Portfolio Section -->
+  <section class="content-section" id="portfolio">
+    <h2 class="section-title">Our <span>Portfolio</span></h2>
+    <div class="portfolio-grid">
+      <div class="portfolio-item">
+        <div class="portfolio-image">
+          <img src="https://images.unsplash.com/photo-1558655146-9f40138edfeb?auto=format&fit=crop&w=600&q=80" alt="E-commerce Website">
+        </div>
+        <div class="portfolio-info">
+          <h3>Filipino Fashion E-commerce</h3>
+          <p>A fully responsive e-commerce platform for a local fashion brand, featuring custom product filters and secure payment integration.</p>
+        </div>
+      </div>
+      
+      <div class="portfolio-item">
+        <div class="portfolio-image">
+          <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=600&q=80" alt="Business Website">
+        </div>
+        <div class="portfolio-info">
+          <h3>Corporate Business Portal</h3>
+          <p>A comprehensive corporate website with integrated CMS, employee portal, and client management system for a multinational company.</p>
+        </div>
+      </div>
+      
+      <div class="portfolio-item">
+        <div class="portfolio-image">
+          <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?auto=format&fit=crop&w=600&q=80" alt="Mobile App">
+        </div>
+        <div class="portfolio-info">
+          <h3>Food Delivery Mobile App</h3>
+          <p>A feature-rich food delivery application with real-time tracking, multiple payment options, and restaurant management dashboard.</p>
+        </div>
+      </div>
+      
+      <div class="portfolio-item">
+        <div class="portfolio-image">
+          <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&w=600&q=80" alt="Travel Website">
+        </div>
+        <div class="portfolio-info">
+          <h3>Travel Booking Platform</h3>
+          <p>A complete travel booking website with flight, hotel, and tour package integrations, featuring a custom booking engine.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Blog Section -->
+  <section class="content-section" id="blog">
+    <h2 class="section-title">Our <span>Blog</span></h2>
+    <div class="blog-grid">
+      <div class="blog-card">
+        <div class="blog-image">
+          <img src="https://images.unsplash.com/photo-1547658719-da2b51169166?auto=format&fit=crop&w=600&q=80" alt="Web Design Trends">
+        </div>
+        <div class="blog-content">
+          <h3>Top Web Design Trends in 2023</h3>
+          <p>Discover the latest web design trends that are shaping the digital landscape this year and how they can benefit your business.</p>
+          <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+      
+      <div class="blog-card">
+        <div class="blog-image">
+          <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=600&q=80" alt="SEO Tips">
+        </div>
+        <div class="blog-content">
+          <h3>SEO Strategies for Local Businesses</h3>
+          <p>Learn effective SEO techniques specifically tailored for local businesses looking to improve their online visibility.</p>
+          <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+      
+      <div class="blog-card">
+        <div class="blog-image">
+          <img src="https://images.unsplash.com/photo-1553877522-43269d4ea984?auto=format&fit=crop&w=600&q=80" alt="Mobile App Development">
+        </div>
+        <div class="blog-content">
+          <h3>Native vs Hybrid Mobile Apps</h3>
+          <p>A comprehensive comparison between native and hybrid mobile app development approaches to help you make the right choice.</p>
+          <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section class="content-section" id="contact">
+    <h2 class="section-title">Contact <span>Us</span></h2>
+    <div class="contact-container">
+      <div class="contact-info">
+        <h3>Get In Touch</h3>
+        <p>Ready to start your project? Contact us today and let's discuss how we can help bring your ideas to life.</p>
+        
+        <div class="contact-details">
+          <div class="contact-item">
+            <i class="fas fa-map-marker-alt"></i>
+            <div>
+              <h4>Our Office</h4>
+              <p>123 Tech Street, Makati City, Metro Manila, Philippines</p>
+            </div>
+          </div>
+          
+          <div class="contact-item">
+            <i class="fas fa-phone"></i>
+            <div>
+              <h4>Phone</h4>
+              <p>+63 912 345 6789</p>
+            </div>
+          </div>
+          
+          <div class="contact-item">
+            <i class="fas fa-envelope"></i>
+            <div>
+              <h4>Email</h4>
+              <p>info@webdesignerph.com</p>
+            </div>
+          </div>
+          
+          <div class="contact-item">
+            <i class="fas fa-clock"></i>
+            <div>
+              <h4>Business Hours</h4>
+              <p>Monday - Friday: 9:00 AM - 6:00 PM</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="contact-form">
+        <form>
+          <input type="text" placeholder="Your Name" required>
+          <input type="email" placeholder="Your Email" required>
+          <input type="text" placeholder="Subject">
+          <textarea placeholder="Your Message" required></textarea>
+          <button type="submit" class="btn">Send Message</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-content">
+      <div class="logo">
+        <span class="w">W</span>EB DESIGNER <span class="ph">PHILIPPINES</span>
+      </div>
+      <div class="social-icons">
+        <a href="#"><i class="fab fa-facebook"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-linkedin"></i></a>
+      </div>
+      <p>&copy; 2023 Web Designer Philippines. All rights reserved.</p>
+    </div>
+  </footer>
+</body>
+</html>
+```
+
+What I've Added:
+
+1. Navigation Links: Updated all navigation links with proper IDs for smooth scrolling:
+   · Home → #home
+   · About Us → #about
+   · Our Services → #services
+   · Portfolio → #portfolio
+   · Blog → #blog
+   · Contact Us → #contact
+2. About Us Section: Added company information, mission, and team details with an image.
+3. Enhanced Services Section: Expanded from 3 to 6 services with more detailed descriptions.
+4. Portfolio Section: Added a grid of project examples with images and descriptions.
+5. Blog Section: Created a blog layout with article previews and "Read More" links.
+6. Contact Section: Added a comprehensive contact form and company contact information.
+7. Responsive Design: Ensured all new sections are fully responsive on mobile devices.
+
+Now all navigation items are functional and lead to their respective sections when clicked. The design maintains the original dark theme with red accents for consistency.
